@@ -13,9 +13,9 @@
     </bean>
 
     <bean id="personPetCat" class="com.voronin.spring.Person">
-        <constructor-arg ref="cat"/>
+        <property name="pet" ref="cat"/>
     </bean>
     <bean id="personPetDog" class="com.voronin.spring.Person">
-        <constructor-arg ref="dog"/>
+        <property name="pet" ref="dog"/>
     </bean>
 </beans>
