@@ -18,4 +18,10 @@
     <bean id="personPetDog" class="com.voronin.spring.Person">
         <property name="pet" ref="dog"/>
     </bean>
+
+    <bean id="person" class="com.voronin.spring.Person">
+        <property name="name" value="John"/>
+        <property name="surname" value="Doe"/>
+        <property name="age" value="99"/>
+    </bean>
 </beans>
