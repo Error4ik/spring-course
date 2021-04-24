@@ -2,6 +2,7 @@ package com.voronin.spring;
 
 import org.junit.After;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.ByteArrayOutputStream;
