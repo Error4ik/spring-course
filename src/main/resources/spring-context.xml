@@ -8,9 +8,14 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="dog" class="com.voronin.spring.Dog">
-
     </bean>
     <bean id="cat" class="com.voronin.spring.Cat">
+    </bean>
 
+    <bean id="personPetCat" class="com.voronin.spring.Person">
+        <constructor-arg ref="cat"/>
+    </bean>
+    <bean id="personPetDog" class="com.voronin.spring.Person">
+        <constructor-arg ref="dog"/>
     </bean>
 </beans>
