@@ -9,9 +9,9 @@
 
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean id="dog" class="com.voronin.spring.Dog">
+    <bean id="dog" class="com.voronin.spring.Dog" scope="prototype">
     </bean>
-    <bean id="cat" class="com.voronin.spring.Cat">
+    <bean id="cat" class="com.voronin.spring.Cat" scope="singleton">
     </bean>
 
     <bean id="personPetCat" class="com.voronin.spring.Person">

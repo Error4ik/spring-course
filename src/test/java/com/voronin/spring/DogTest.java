@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DogTest {
@@ -32,5 +33,21 @@ public class DogTest {
 
         dog.say();
         assertThat(out.toString(), is(expectedValue));
+    }
+
+    @Test
+    public void whenSingletonScopeGetBeanShouldReturnTheSameOneObject() throws Exception {
+        Pet firstCat = context.getBean("cat", Pet.class);
+        Pet secondCat = context.getBean("cat", Pet.class);
+
+        assertThat(firstCat, is(secondCat));
+    }
+
+    @Test
+    public void whenPrototypeScopeGetBeanShouldReturnTheOtherObject() throws Exception {
+        Pet firstDog = context.getBean("dog", Pet.class);
+        Pet secondDog = context.getBean("dog", Pet.class);
+
+        assertThat(firstDog, is(not(secondDog)));
     }
 }
