@@ -1,7 +1,10 @@
 package com.voronin.spring;
 
 import com.voronin.spring.interfaces.Pet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component("personBean")
 public class Person {
     private String name;
     private String surname;
@@ -11,6 +14,7 @@ public class Person {
     public Person() {
     }
 
+    @Autowired
     public Person(Pet pet) {
         this.pet = pet;
     }
