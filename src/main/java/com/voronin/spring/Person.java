@@ -1,12 +1,8 @@
 package com.voronin.spring;
 
 import com.voronin.spring.interfaces.Pet;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Component("personBean")
 public class Person {
     @Value("${person.name}")
     private String name;
@@ -19,8 +15,7 @@ public class Person {
     public Person() {
     }
 
-    @Autowired
-    public Person(@Qualifier("dogBean") Pet pet) {
+    public Person(Pet pet) {
         this.pet = pet;
     }
 

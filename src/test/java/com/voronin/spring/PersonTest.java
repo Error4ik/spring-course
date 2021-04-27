@@ -1,8 +1,9 @@
 package com.voronin.spring;
 
+import com.voronin.spring.config.SpringConfig;
 import org.junit.After;
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -14,9 +15,9 @@ public class PersonTest {
 
     private final String sep = System.getProperty("line.separator");
 
-    private final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
+    private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-    private final Person person = context.getBean("personBean", Person.class);
+    private final Person person = context.getBean("getPersonBean", Person.class);
 
     @After
     public void afterTest() {

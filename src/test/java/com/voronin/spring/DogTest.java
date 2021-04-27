@@ -1,9 +1,10 @@
 package com.voronin.spring;
 
+import com.voronin.spring.config.SpringConfig;
 import com.voronin.spring.interfaces.Pet;
 import org.junit.After;
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -16,9 +17,9 @@ public class DogTest {
 
     private final String sep = System.getProperty("line.separator");
 
-    private final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
+    private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-    private final Pet dog = context.getBean("dogBean", Pet.class);
+    private final Pet dog = context.getBean("getDogBean", Pet.class);
 
     @After
     public void afterTest() {
@@ -37,16 +38,16 @@ public class DogTest {
 
     @Test
     public void whenSingletonScopeGetBeanShouldReturnTheSameOneObject() throws Exception {
-        Pet firstCat = context.getBean("catBean", Pet.class);
-        Pet secondCat = context.getBean("catBean", Pet.class);
+        Pet firstCat = context.getBean("getCatBean", Pet.class);
+        Pet secondCat = context.getBean("getCatBean", Pet.class);
 
         assertThat(firstCat, is(secondCat));
     }
 
     @Test
     public void whenPrototypeScopeGetBeanShouldReturnTheOtherObject() throws Exception {
-        Pet firstDog = context.getBean("dogBean", Pet.class);
-        Pet secondDog = context.getBean("dogBean", Pet.class);
+        Pet firstDog = context.getBean("getDogBean", Pet.class);
+        Pet secondDog = context.getBean("getDogBean", Pet.class);
 
         assertThat(firstDog, is(not(secondDog)));
     }
