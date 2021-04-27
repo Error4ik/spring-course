@@ -32,4 +32,22 @@ public class PersonTest {
         person.callYourPet();
         assertThat(out.toString(), is(expectedValue));
     }
+
+    @Test
+    public void whenCallMethodGetNameShouldReturnPersonName() throws Exception {
+        String expected = "John";
+        assertThat(person.getName(), is(expected));
+    }
+
+    @Test
+    public void whenCallMethodGetSurNameShouldReturnPersonSurName() throws Exception {
+        String expected = "Doe";
+        assertThat(person.getSurname(), is(expected));
+    }
+
+    @Test
+    public void whenCallMethodGetAgeShouldReturnPersonAge() throws Exception {
+        int expected = 99;
+        assertThat(person.getAge(), is(expected));
+    }
 }
