@@ -1,9 +1,10 @@
 package com.voronin.spring;
 
+import com.voronin.spring.config.SpringConfig;
 import com.voronin.spring.interfaces.Pet;
 import org.junit.After;
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -16,7 +17,7 @@ public class DogTest {
 
     private final String sep = System.getProperty("line.separator");
 
-    private final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
+    private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
     private final Pet dog = context.getBean("dogBean", Pet.class);
 
