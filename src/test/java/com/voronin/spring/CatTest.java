@@ -18,7 +18,7 @@ public class CatTest {
 
     private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-    private final Pet cat = context.getBean("catBean", Pet.class);
+    private final Pet cat = context.getBean("getCatBean", Pet.class);
 
     @After
     public void afterTest() {

@@ -17,7 +17,7 @@ public class PersonTest {
 
     private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-    private final Person person = context.getBean("personBean", Person.class);
+    private final Person person = context.getBean("getPersonBean", Person.class);
 
     @After
     public void afterTest() {
