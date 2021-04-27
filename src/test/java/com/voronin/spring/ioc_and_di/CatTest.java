@@ -1,7 +1,7 @@
-package com.voronin.spring;
+package com.voronin.spring.ioc_and_di;
 
-import com.voronin.spring.config.SpringConfig;
-import com.voronin.spring.interfaces.Pet;
+import com.voronin.spring.ioc_and_di.config.SpringConfig;
+import com.voronin.spring.ioc_and_di.interfaces.Pet;
 import org.junit.After;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

@@ -1,6 +1,6 @@
-package com.voronin.spring;
+package com.voronin.spring.ioc_and_di;
 
-import com.voronin.spring.interfaces.Pet;
+import com.voronin.spring.ioc_and_di.interfaces.Pet;
 
 public class Cat implements Pet {
     @Override
