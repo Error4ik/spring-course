@@ -7,23 +7,6 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:component-scan base-package="com.voronin.spring"/>
     <context:property-placeholder location="classpath:application.properties"/>
-
-    <bean id="dog" class="com.voronin.spring.Dog" scope="prototype">
-    </bean>
-    <bean id="cat" class="com.voronin.spring.Cat" scope="singleton">
-    </bean>
-
-    <bean id="personPetCat" class="com.voronin.spring.Person">
-        <property name="pet" ref="cat"/>
-    </bean>
-    <bean id="personPetDog" class="com.voronin.spring.Person">
-        <property name="pet" ref="dog"/>
-    </bean>
-
-    <bean id="person" class="com.voronin.spring.Person">
-        <property name="name" value="${person.name}"/>
-        <property name="surname" value="${person.surname}"/>
-        <property name="age" value="${person.age}"/>
-    </bean>
 </beans>

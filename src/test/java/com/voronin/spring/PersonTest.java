@@ -2,7 +2,6 @@ package com.voronin.spring;
 
 import org.junit.After;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.ByteArrayOutputStream;
@@ -17,9 +16,7 @@ public class PersonTest {
 
     private final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
 
-    private final Person personPetDog = context.getBean("personPetDog", Person.class);
-    private final Person personPetCat = context.getBean("personPetCat", Person.class);
-    private final Person person = context.getBean("person", Person.class);
+    private final Person person = context.getBean("personBean", Person.class);
 
     @After
     public void afterTest() {
@@ -32,17 +29,7 @@ public class PersonTest {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        personPetDog.callYourPet();
-        assertThat(out.toString(), is(expectedValue));
-    }
-
-    @Test
-    public void whenPetIsCatShouldPetCatSay() {
-        final String expectedValue = String.format("Pet voice!%s%s%s", sep, "Cat says Mew-Mew!", sep);
-        final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        personPetCat.callYourPet();
+        person.callYourPet();
         assertThat(out.toString(), is(expectedValue));
     }
 

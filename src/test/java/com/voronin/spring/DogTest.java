@@ -18,7 +18,7 @@ public class DogTest {
 
     private final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
 
-    private final Pet dog = context.getBean("dog", Pet.class);
+    private final Pet dog = context.getBean("dogBean", Pet.class);
 
     @After
     public void afterTest() {
@@ -37,16 +37,16 @@ public class DogTest {
 
     @Test
     public void whenSingletonScopeGetBeanShouldReturnTheSameOneObject() throws Exception {
-        Pet firstCat = context.getBean("cat", Pet.class);
-        Pet secondCat = context.getBean("cat", Pet.class);
+        Pet firstCat = context.getBean("catBean", Pet.class);
+        Pet secondCat = context.getBean("catBean", Pet.class);
 
         assertThat(firstCat, is(secondCat));
     }
 
     @Test
     public void whenPrototypeScopeGetBeanShouldReturnTheOtherObject() throws Exception {
-        Pet firstDog = context.getBean("dog", Pet.class);
-        Pet secondDog = context.getBean("dog", Pet.class);
+        Pet firstDog = context.getBean("dogBean", Pet.class);
+        Pet secondDog = context.getBean("dogBean", Pet.class);
 
         assertThat(firstDog, is(not(secondDog)));
     }
