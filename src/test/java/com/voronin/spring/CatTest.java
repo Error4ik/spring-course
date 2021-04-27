@@ -17,7 +17,7 @@ public class CatTest {
 
     private final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
 
-    private final Pet cat = context.getBean("cat", Pet.class);
+    private final Pet cat = context.getBean("catBean", Pet.class);
 
     @After
     public void afterTest() {
