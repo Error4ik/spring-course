@@ -1,13 +1,14 @@
 package com.voronin.spring;
 
 import com.voronin.spring.interfaces.Pet;
+import org.springframework.beans.factory.annotation.Value;
 
 public class Person {
-//    @Value("${person.name}")
+    @Value("${person.name}")
     private String name;
-//    @Value("${person.surname}")
+    @Value("${person.surname}")
     private String surname;
-//    @Value("${person.age}")
+    @Value("${person.age}")
     private int age;
     private Pet pet;
 

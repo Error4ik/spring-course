@@ -6,9 +6,11 @@ import com.voronin.spring.Person;
 import com.voronin.spring.interfaces.Pet;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
+@PropertySource("classpath:application.properties")
 public class SpringConfig {
 
     @Bean
