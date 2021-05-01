@@ -9,4 +9,8 @@ public class Library {
     public void getBook() {
         System.out.println("We get the book!");
     }
+    
+    public void getMagazine() {
+        System.out.println("We get the Magazine!");
+    }
 }

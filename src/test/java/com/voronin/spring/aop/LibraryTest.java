@@ -26,15 +26,16 @@ public class LibraryTest {
 
     @Test
     public void getBook() {
-        final String expectedValue = String.format(
-                "%s%sWe get the book!%s",
-                "beforeGetBookAdvise: trying to get a book!",
-                sep,
-                sep);
+        final String expectedValue = String.format("%s%s%s%s%s%s%s%s",
+                "beforeGetBookAdvise: trying to get a book!", sep,
+                "We get the book!", sep,
+                "beforeGetBookAdvise: trying to get a book!", sep,
+                "We get the Magazine!", sep);
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
         libraryBean.getBook();
+        libraryBean.getMagazine();
         assertThat(out.toString(), is(expectedValue));
     }
 }
