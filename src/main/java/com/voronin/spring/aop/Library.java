@@ -1,16 +1,23 @@
 package com.voronin.spring.aop;
 
-import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 @Component("libraryBean")
 public class Library {
 
-    public void getBook() {
-        System.out.println("We get the book!");
+    public String getBook() {
+        return "Some Book!";
     }
-    
-    public void getMagazine() {
-        System.out.println("We get the Magazine!");
+
+    public String getMagazine() {
+        return "Some Magazine!";
+    }
+
+    public void addBook() {
+        System.out.println("We added a book!");
+    }
+
+    public void addMagazine() {
+        System.out.println("We added a Magazine!");
     }
 }
