@@ -18,28 +18,11 @@ public class LibraryTest {
     private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
     private final Library libraryBean = context.getBean("libraryBean", Library.class);
+    private final Book book = context.getBean("book", Book.class);
 
     @After
     public void afterTest() {
         context.close();
-    }
-
-    @Test
-    public void getBookAndGetMagazine() {
-        String expectedBook = "Some Book!";
-        String expectedMagazine = "Some Magazine!";
-        final String expectedOut = String.format("%s%s%s%s",
-                "beforeGetAdvise: Before method get*()", sep,
-                "beforeGetAdvise: Before method get*()", sep);
-        final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        String actualBook = libraryBean.getBook();
-        String actualMagazine = libraryBean.getMagazine();
-
-        assertThat(out.toString(), is(expectedOut));
-        assertThat(expectedBook, is(actualBook));
-        assertThat(expectedMagazine, is(actualMagazine));
     }
 
     @Test
@@ -55,5 +38,18 @@ public class LibraryTest {
         libraryBean.addBook();
         libraryBean.addMagazine();
         assertThat(out.toString(), is(expectedOut));
+    }
+
+    @Test
+    public void getBookWithBookName() throws Exception {
+        final String expectedOut = String.format("%s%s",
+                "beforeGetBookWithBookName: get book with name!", sep);
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        String expectedBook = String.format("The book %s was returned!", book.getName());
+        String actualBook = libraryBean.getBookWithBookName(book);
+        assertThat(out.toString(), is(expectedOut));
+        assertThat(actualBook, is(expectedBook));
     }
 }
