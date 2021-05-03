@@ -25,19 +25,43 @@ public class LibraryTest {
     }
 
     @Test
-    public void getBookWithBookName() throws Exception {
-        final String expectedOut = String.format("%s%s%s%s%s%s%s%s%s%s%s%s",
-                "beforeGetBookAdvise: trying to get a book or magazine!", sep,
-                "beforeGetSecurityAdvise: checking the rights to receive a book or magazine!", sep,
+    public void getBookOrMagazine() throws Exception {
+        final String expectedOut = String.format("%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s",
+                "beforeAllMethodsExceptReturnMagazineFromLibrary: writing log #10", sep,
+                "beforeGetAndReturnLoggingAdvise: writing log #3", sep,
+                "beforeGetLoggingAdvise: writing log #1", sep,
                 "We get the book!", sep,
-                "beforeGetBookAdvise: trying to get a book or magazine!", sep,
-                "beforeGetSecurityAdvise: checking the rights to receive a book or magazine!", sep,
+
+                "beforeAllMethodsExceptReturnMagazineFromLibrary: writing log #10", sep,
+                "beforeGetAndReturnLoggingAdvise: writing log #3", sep,
+                "beforeGetLoggingAdvise: writing log #1", sep,
                 "We get the Magazine!", sep);
+
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
         libraryBean.getBook();
         libraryBean.getMagazine();
+        assertThat(out.toString(), is(expectedOut));
+    }
+
+    @Test
+    public void returnBookOrMagazineButReturnMagazineNotCallTheLog10Advise() throws Exception {
+        final String expectedOut = String.format("%s%s%s%s%s%s%s%s%s%s%s%s%s%s",
+                "beforeAllMethodsExceptReturnMagazineFromLibrary: writing log #10", sep,
+                "beforeGetAndReturnLoggingAdvise: writing log #3", sep,
+                "beforeReturnLoggingAdvise: writing log #2", sep,
+                "We are returning the Book!", sep,
+
+                "beforeGetAndReturnLoggingAdvise: writing log #3", sep,
+                "beforeReturnLoggingAdvise: writing log #2", sep,
+                "We are returning the Magazine!", sep);
+
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        libraryBean.returnBook();
+        libraryBean.returnMagazine();
         assertThat(out.toString(), is(expectedOut));
     }
 }

@@ -9,17 +9,47 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAndSecurityAspect {
 
-    @Pointcut("execution(* get*())")
-    private void allGetMethods() {
+    @Pointcut("execution(* com.voronin.spring.aop.Library.*(..))")
+    private void allMethodsFromLibrary() {
     }
 
-    @Before("allGetMethods()")
-    public void beforeGetBookOrMagazineAdvise() {
-        System.out.println("beforeGetBookAdvise: trying to get a book or magazine!");
+    @Pointcut("execution(public void com.voronin.spring.aop.Library.returnMagazine())")
+    private void returnMagazineFromLibrary() {
     }
 
-    @Before("allGetMethods()")
-    public void beforeGetSecurityAdvise() {
-        System.out.println("beforeGetSecurityAdvise: checking the rights to receive a book or magazine!");
+    @Pointcut("execution(* com.voronin.spring.aop.Library.get*())")
+    private void allGetMethodsFromLibrary() {
+    }
+
+    @Pointcut("execution(* com.voronin.spring.aop.Library.return*())")
+    private void allReturnMethodsFromLibrary() {
+    }
+
+    @Pointcut("allGetMethodsFromLibrary() || allReturnMethodsFromLibrary()")
+    private void allGetAndReturnMethodsFromLibrary() {
+    }
+
+    @Pointcut("allMethodsFromLibrary() && !returnMagazineFromLibrary()")
+    private void allMethodsExceptReturnMagazineFromLibrary() {
+    }
+
+    @Before("allGetMethodsFromLibrary()")
+    public void beforeGetLoggingAdvise() {
+        System.out.println("beforeGetLoggingAdvise: writing log #1");
+    }
+
+    @Before("allReturnMethodsFromLibrary()")
+    public void beforeReturnLoggingAdvise() {
+        System.out.println("beforeReturnLoggingAdvise: writing log #2");
+    }
+
+    @Before("allGetAndReturnMethodsFromLibrary()")
+    public void beforeGetAndReturnLoggingAdvise() {
+        System.out.println("beforeGetAndReturnLoggingAdvise: writing log #3");
+    }
+
+    @Before("allMethodsExceptReturnMagazineFromLibrary()")
+    public void beforeAllMethodsExceptReturnMagazineFromLibrary() {
+        System.out.println("beforeAllMethodsExceptReturnMagazineFromLibrary: writing log #10");
     }
 }
