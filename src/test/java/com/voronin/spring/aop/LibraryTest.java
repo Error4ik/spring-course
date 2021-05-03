@@ -18,7 +18,6 @@ public class LibraryTest {
     private final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
     private final Library libraryBean = context.getBean("libraryBean", Library.class);
-    private final Book book = context.getBean("book", Book.class);
 
     @After
     public void afterTest() {
@@ -26,30 +25,19 @@ public class LibraryTest {
     }
 
     @Test
-    public void addBookAndAddMagazine() throws Exception {
-        final String expectedOut = String.format("%s%s%s%s%s%s%s%s",
-                "beforeAddAdvise: trying to add a book or magazine!", sep,
-                "We added a book!", sep,
-                "beforeAddAdvise: trying to add a book or magazine!", sep,
-                "We added a Magazine!", sep);
-        final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        libraryBean.addBook();
-        libraryBean.addMagazine();
-        assertThat(out.toString(), is(expectedOut));
-    }
-
-    @Test
     public void getBookWithBookName() throws Exception {
-        final String expectedOut = String.format("%s%s",
-                "beforeGetBookWithBookName: get book with name!", sep);
+        final String expectedOut = String.format("%s%s%s%s%s%s%s%s%s%s%s%s",
+                "beforeGetBookAdvise: trying to get a book or magazine!", sep,
+                "beforeGetSecurityAdvise: checking the rights to receive a book or magazine!", sep,
+                "We get the book!", sep,
+                "beforeGetBookAdvise: trying to get a book or magazine!", sep,
+                "beforeGetSecurityAdvise: checking the rights to receive a book or magazine!", sep,
+                "We get the Magazine!", sep);
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        String expectedBook = String.format("The book %s was returned!", book.getName());
-        String actualBook = libraryBean.getBookWithBookName(book);
+        libraryBean.getBook();
+        libraryBean.getMagazine();
         assertThat(out.toString(), is(expectedOut));
-        assertThat(actualBook, is(expectedBook));
     }
 }
