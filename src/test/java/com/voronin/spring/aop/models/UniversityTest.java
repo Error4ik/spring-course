@@ -25,10 +25,11 @@ public class UniversityTest {
 
     @Test
     public void getStudents() throws Exception {
-        final String expectedOut = String.format("%s%s%s%s%s%s%s%s",
+        final String expectedOut = String.format("%s%s%s%s%s%s%s%s%s%s",
                 "beforeGetStudentsLoggingAdvice: Logging get students!", sep,
                 "Information from method getStudents:", sep,
                 "afterThrowingGetStudentsLoggingAdvice: Logging Throwing exception: java.lang.IndexOutOfBoundsException: Index: 3, Size: 3", sep,
+                "afterGetStudentsLoggingAdvice: Logging the normal termination of the method, or throwing exception!", sep,
                 "Catch Exception java.lang.IndexOutOfBoundsException: Index: 3, Size: 3", sep);
 
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
