@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(3)
 public class ExceptionHandlingAspect {
-    @Before("com.voronin.spring.aop.aspects.MyPointcuts.allGetMethodsFromLibrary()")
-    public void beforeGetExceptionHandlingAdvise() {
-        System.out.println("beforeGetExceptionHandlingAdvise: catch an exception when trying to get a book or magazine!");
+    @Before("com.voronin.spring.aop.aspects.MyPointcuts.allAddMethodsFromLibrary()")
+    public void beforeAddExceptionHandlingAdvise() {
+        System.out.println("beforeAddExceptionHandlingAdvise: catch an exception when trying to get a book or magazine!");
     }
 }

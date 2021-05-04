@@ -1,5 +1,6 @@
 package com.voronin.spring.aop;
 
+import com.voronin.spring.aop.models.PrintedProduct;
 import org.springframework.stereotype.Component;
 
 @Component("libraryBean")
@@ -13,8 +14,8 @@ public class Library {
         System.out.println("We are returning the Book!");
     }
 
-    public void addBook() {
-        System.out.println("We are adding the Book!");
+    public void addPrintedProduct(String personName, PrintedProduct printedProduct) {
+        System.out.println(String.format("We are adding the %s!", printedProduct.getName()));
     }
 
     public void getMagazine() {
@@ -23,9 +24,5 @@ public class Library {
 
     public void returnMagazine() {
         System.out.println("We are returning the Magazine!");
-    }
-
-    public void addMagazine() {
-        System.out.println("We are adding the Magazine!");
     }
 }
