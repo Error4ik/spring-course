@@ -21,7 +21,7 @@ public class University {
 
     public List<Student> getStudents() {
         System.out.println("Information from method getStudents:");
-        System.out.println(students);
+        System.out.println(this.students.get(3));
         return this.students;
     }
 }
