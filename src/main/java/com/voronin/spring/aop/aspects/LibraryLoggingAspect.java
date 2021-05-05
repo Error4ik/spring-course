@@ -11,7 +11,16 @@ public class LibraryLoggingAspect {
     @Around("execution(public String returnBook())")
     public Object aroundReturnBookLoggingAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         System.out.println("aroundReturnBookLoggingAdvice: Trying to return the book!");
-        Object proceed = proceedingJoinPoint.proceed();
+
+        Object proceed;
+
+        try {
+            proceed = proceedingJoinPoint.proceed();
+        } catch (Exception e) {
+            System.out.println(String.format("aroundReturnBookLoggingAdvice: Logging Exception %s", e));
+            throw e;
+        }
+
         System.out.println("aroundReturnBookLoggingAdvice: Returning the book!");
         return proceed;
     }
