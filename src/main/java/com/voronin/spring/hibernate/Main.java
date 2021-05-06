@@ -1,5 +1,6 @@
 package com.voronin.spring.hibernate;
 
+import com.voronin.spring.hibernate.entity.Details;
 import com.voronin.spring.hibernate.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,21 +11,28 @@ public class Main {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
+                .addAnnotatedClass(Details.class)
                 .buildSessionFactory();
 
-        Session session;
-        Employee employee;
+        Session session = null;
 
         try {
             session = sessionFactory.getCurrentSession();
+//            Employee employee = new Employee("Oleg", "Ivanov", "Sales", 700);
+//            Details details = new Details("Moscow", "121352135", "Oleg@oleg.ru");
+//            employee.setDetails(details);
             session.beginTransaction();
 
-//            employee = session.get(Employee.class, 4);
-//            session.delete(employee);
-            session.createQuery("delete Employee where name = 'Alexander'").executeUpdate();
+//            session.save(employee);
+
+            Employee employee = session.get(Employee.class, 2);
+            session.delete(employee);
 
             session.getTransaction().commit();
         } finally {
+            if (session != null) {
+                session.close();
+            }
             sessionFactory.close();
         }
     }
