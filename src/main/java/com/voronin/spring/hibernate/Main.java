@@ -20,9 +20,8 @@ public class Main {
             session.beginTransaction();
 
 //            employee = session.get(Employee.class, 4);
-//            employee.setSalary(employee.getSalary() + 1000);
-
-            session.createQuery("update Employee set salary = 1000 where name = 'Alexander'").executeUpdate();
+//            session.delete(employee);
+            session.createQuery("delete Employee where name = 'Alexander'").executeUpdate();
 
             session.getTransaction().commit();
         } finally {
