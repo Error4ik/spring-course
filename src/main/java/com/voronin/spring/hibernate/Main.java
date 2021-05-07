@@ -18,15 +18,18 @@ public class Main {
 
         try {
             session = sessionFactory.getCurrentSession();
-//            Employee employee = new Employee("Oleg", "Ivanov", "Sales", 700);
-//            Details details = new Details("Moscow", "121352135", "Oleg@oleg.ru");
+//            Employee employee = new Employee("Max", "Vasilev", "IT", 690);
+//            Details details = new Details("London", "12432111135", "max@max.ru");
 //            employee.setDetails(details);
+//            details.setEmployee(employee);
+
             session.beginTransaction();
+//            session.save(details);
 
-//            session.save(employee);
+            Details details = session.get(Details.class, 3);
+//            System.out.println(details.getEmployee());
 
-            Employee employee = session.get(Employee.class, 2);
-            session.delete(employee);
+            session.delete(details);
 
             session.getTransaction().commit();
         } finally {
