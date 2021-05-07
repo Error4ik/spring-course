@@ -22,7 +22,8 @@ public class Department {
     @Column(name = "max_salary")
     private int maxSalary;
 
-    @OneToMany(mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
     private List<Employee> employees;
 
     public Department() {
@@ -39,7 +40,6 @@ public class Department {
             employees = new ArrayList<>();
         }
         employees.add(employee);
-        employee.setDepartment(this);
     }
 
     public int getId() {

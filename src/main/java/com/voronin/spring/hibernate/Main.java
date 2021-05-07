@@ -4,6 +4,7 @@ import com.voronin.spring.hibernate.entity.Department;
 import com.voronin.spring.hibernate.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.TempTableDdlTransactionHandling;
 import org.hibernate.cfg.Configuration;
 
 public class Main {
@@ -22,19 +23,19 @@ public class Main {
 //            Department department = new Department("IT", 300, 1200);
 //            Employee emp1 = new Employee("Alex", "Ivanov", 800);
 //            Employee emp2 = new Employee("Maria", "Smirnova", 1000);
-
+//
 //            department.addEmployeeToDepartment(emp1);
 //            department.addEmployeeToDepartment(emp2);
 
             session.beginTransaction();
 //            session.save(department);
 
-//            Department department = session.get(Department.class, 1);
+//            Department department = session.get(Department.class, 3);
 //            System.out.println(department);
 //            System.out.println(department.getEmployees());
 
-            Employee employee = session.get(Employee.class, 2);
-            session.delete(employee);
+            Department department = session.get(Department.class, 3);
+            session.delete(department);
 
             session.getTransaction().commit();
         } finally {
