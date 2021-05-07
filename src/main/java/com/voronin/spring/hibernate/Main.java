@@ -1,18 +1,17 @@
 package com.voronin.spring.hibernate;
 
-import com.voronin.spring.hibernate.entity.Department;
-import com.voronin.spring.hibernate.entity.Employee;
+import com.voronin.spring.hibernate.entity.Child;
+import com.voronin.spring.hibernate.entity.Section;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.TempTableDdlTransactionHandling;
 import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args) {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Employee.class)
-                .addAnnotatedClass(Department.class)
+                .addAnnotatedClass(Child.class)
+                .addAnnotatedClass(Section.class)
                 .buildSessionFactory();
 
         Session session = null;
@@ -20,28 +19,44 @@ public class Main {
         try {
             session = sessionFactory.getCurrentSession();
 
-//            Department department = new Department("Sales", 600, 1200);
-//            Employee emp1 = new Employee("Alex", "Ivanov", 900);
-//            Employee emp2 = new Employee("Maria", "Smirnova", 1000);
-//            Employee emp3 = new Employee("Ivan", "Gorohov", 1300);
+//            Child c1 = new Child("Ylua", 12);
+//            Child c2 = new Child("Sasha", 9);
+//            Child c3 = new Child("Dima", 13);
 //
-//            department.addEmployeeToDepartment(emp1);
-//            department.addEmployeeToDepartment(emp2);
-//            department.addEmployeeToDepartment(emp3);
+//            Section s1 = new Section("Dance");
+//            s1.addChildToSection(c1);
+//            s1.addChildToSection(c2);
+//            s1.addChildToSection(c3);
+
+//            Section s1 = new Section("ValleyBall");
+//            Section s2 = new Section("Chess");
+//            Section s3 = new Section("Math");
+//
+//            Child child = new Child("Ivan", 7);
+//            child.addSectionToChild(s1);
+//            child.addSectionToChild(s2);
+//            child.addSectionToChild(s3);
 
             session.beginTransaction();
 
-//            session.save(department);
+//            session.persist(s1);
+//            session.persist(child);
 
-            System.out.println("Get Department!");
-            Department department = session.get(Department.class, 4);
-            System.out.println("Show Department!");
-            System.out.println(department);
-            System.out.println("-----------------");
+//            Section section = session.get(Section.class, 2);
+//            System.out.println(section);
+//            System.out.println("-----------------");
+//            System.out.println(section.getChildren());
 
-            System.out.println("Show Employees!");
-            System.out.println(department.getEmployees());
-            System.out.println("-----------------");
+//            Child child = session.get(Child.class, 7);
+//            System.out.println(child);
+//            System.out.println("-----------------");
+//            System.out.println(child.getSections());
+
+//            Section section = session.get(Section.class, 5);
+//            session.delete(section);
+
+            Child child = session.get(Child.class, 7);
+            session.delete(child);
 
             session.getTransaction().commit();
         } finally {
