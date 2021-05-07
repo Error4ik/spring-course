@@ -1,6 +1,6 @@
 package com.voronin.spring.hibernate;
 
-import com.voronin.spring.hibernate.entity.Details;
+import com.voronin.spring.hibernate.entity.Department;
 import com.voronin.spring.hibernate.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,25 +11,30 @@ public class Main {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
-                .addAnnotatedClass(Details.class)
+                .addAnnotatedClass(Department.class)
                 .buildSessionFactory();
 
         Session session = null;
 
         try {
             session = sessionFactory.getCurrentSession();
-//            Employee employee = new Employee("Max", "Vasilev", "IT", 690);
-//            Details details = new Details("London", "12432111135", "max@max.ru");
-//            employee.setDetails(details);
-//            details.setEmployee(employee);
+
+//            Department department = new Department("IT", 300, 1200);
+//            Employee emp1 = new Employee("Alex", "Ivanov", 800);
+//            Employee emp2 = new Employee("Maria", "Smirnova", 1000);
+
+//            department.addEmployeeToDepartment(emp1);
+//            department.addEmployeeToDepartment(emp2);
 
             session.beginTransaction();
-//            session.save(details);
+//            session.save(department);
 
-            Details details = session.get(Details.class, 3);
-//            System.out.println(details.getEmployee());
+//            Department department = session.get(Department.class, 1);
+//            System.out.println(department);
+//            System.out.println(department.getEmployees());
 
-            session.delete(details);
+            Employee employee = session.get(Employee.class, 2);
+            session.delete(employee);
 
             session.getTransaction().commit();
         } finally {
