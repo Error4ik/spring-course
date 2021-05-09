@@ -2,6 +2,9 @@ package com.voronin.spring.mvc.model;
 
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 public class Employee {
 
@@ -13,7 +16,10 @@ public class Employee {
 
     private String department;
 
+    private Map<String, String> departments = new HashMap<>();
+
     public Employee() {
+        this.fillDepartments();
     }
 
     public String getName() {
@@ -48,6 +54,14 @@ public class Employee {
         this.department = department;
     }
 
+    public Map<String, String> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Map<String, String> departments) {
+        this.departments = departments;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -56,5 +70,11 @@ public class Employee {
                 ", salary=" + salary +
                 ", department='" + department + '\'' +
                 '}';
+    }
+
+    private void fillDepartments() {
+        this.departments.put("Information Technology", "IT");
+        this.departments.put("Human Resources", "HR");
+        this.departments.put("Sales", "Sales");
     }
 }

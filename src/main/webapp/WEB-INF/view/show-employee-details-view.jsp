@@ -17,6 +17,11 @@
             Your salary: ${employee.salary}
         </h2>
     </div>
+    <div>
+    <h2>
+        Your department: ${employee.department}
+    </h2>
+</div>
 </div>
 </body>
 </html>
