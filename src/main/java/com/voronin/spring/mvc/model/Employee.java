@@ -16,10 +16,14 @@ public class Employee {
 
     private String department;
 
+    private String carBrand;
+
     private Map<String, String> departments = new HashMap<>();
 
+    private Map<String, String> carBrands = new HashMap<>();
+
     public Employee() {
-        this.fillDepartments();
+        this.fillMaps();
     }
 
     public String getName() {
@@ -54,12 +58,28 @@ public class Employee {
         this.department = department;
     }
 
+    public String getCarBrand() {
+        return carBrand;
+    }
+
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
+    }
+
     public Map<String, String> getDepartments() {
         return departments;
     }
 
     public void setDepartments(Map<String, String> departments) {
         this.departments = departments;
+    }
+
+    public Map<String, String> getCarBrands() {
+        return carBrands;
+    }
+
+    public void setCarBrands(Map<String, String> carBrands) {
+        this.carBrands = carBrands;
     }
 
     @Override
@@ -69,12 +89,17 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", salary=" + salary +
                 ", department='" + department + '\'' +
+                ", carBrand='" + carBrand + '\'' +
                 '}';
     }
 
-    private void fillDepartments() {
+    private void fillMaps() {
         this.departments.put("Information Technology", "IT");
         this.departments.put("Human Resources", "HR");
         this.departments.put("Sales", "Sales");
+
+        this.carBrands.put("BMW", "BMW");
+        this.carBrands.put("AUDI", "AUDI");
+        this.carBrands.put("Mercedes-Benz", "MB");
     }
 }

@@ -18,10 +18,15 @@
         </h2>
     </div>
     <div>
-    <h2>
-        Your department: ${employee.department}
-    </h2>
-</div>
+        <h2>
+            Your department: ${employee.department}
+        </h2>
+    </div>
+    <div>
+        <h2>
+            Your Car: ${employee.carBrand}
+        </h2>
+    </div>
 </div>
 </body>
 </html>
