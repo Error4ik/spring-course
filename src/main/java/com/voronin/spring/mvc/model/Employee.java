@@ -3,6 +3,7 @@ package com.voronin.spring.mvc.model;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -18,9 +19,13 @@ public class Employee {
 
     private String carBrand;
 
+    private List<String> languages;
+
     private Map<String, String> departments = new HashMap<>();
 
     private Map<String, String> carBrands = new HashMap<>();
+
+    private Map<String, String> languagesMap = new HashMap<>();
 
     public Employee() {
         this.fillMaps();
@@ -66,6 +71,14 @@ public class Employee {
         this.carBrand = carBrand;
     }
 
+    public List<String> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<String> languages) {
+        this.languages = languages;
+    }
+
     public Map<String, String> getDepartments() {
         return departments;
     }
@@ -82,6 +95,14 @@ public class Employee {
         this.carBrands = carBrands;
     }
 
+    public Map<String, String> getLanguagesMap() {
+        return languagesMap;
+    }
+
+    public void setLanguagesMap(Map<String, String> languagesMap) {
+        this.languagesMap = languagesMap;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -90,6 +111,7 @@ public class Employee {
                 ", salary=" + salary +
                 ", department='" + department + '\'' +
                 ", carBrand='" + carBrand + '\'' +
+                ", languages=" + languages +
                 '}';
     }
 
@@ -101,5 +123,9 @@ public class Employee {
         this.carBrands.put("BMW", "BMW");
         this.carBrands.put("AUDI", "AUDI");
         this.carBrands.put("Mercedes-Benz", "MB");
+
+        this.languagesMap.put("English", "EN");
+        this.languagesMap.put("Russian", "RU");
+        this.languagesMap.put("French", "FR");
     }
 }
