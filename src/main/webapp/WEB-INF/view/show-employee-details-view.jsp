@@ -2,7 +2,10 @@
 <html>
 <body>
 <div>
-    <h2>Hello ${param.employeeName}</h2>
+    <h2>${nameAttribute}</h2>
+</div>
+<div>
+    <h2>${description}</h2>
 </div>
 </body>
 </html>
