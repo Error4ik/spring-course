@@ -5,10 +5,12 @@
 <div>
     <h2>Ask</h2>
     <div>
-        <form:form action="show-details" modelAttribute="employee">
+        <form:form action="./show-details" modelAttribute="employee">
             Name <form:input path="name"/>
+            <form:errors path="name"/>
             <br><br><br>
             Surname <form:input path="surname"/>
+            <form:errors path="surname"/>
             <br><br><br>
             Salary <form:input path="salary"/>
             <br><br><br>

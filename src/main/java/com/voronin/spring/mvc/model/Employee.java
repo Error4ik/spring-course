@@ -1,16 +1,16 @@
 package com.voronin.spring.mvc.model;
 
-import org.springframework.stereotype.Component;
-
+import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
 public class Employee {
 
+    @Size(min = 2, max = 15, message = "The name must contain at least 2 and no more than 15 characters")
     private String name;
 
+    @Size(min = 2, max = 15, message = "The surname must contain at least 2 and no more than 15 characters")
     private String surname;
 
     private int salary;
