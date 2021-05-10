@@ -1,5 +1,8 @@
 package com.voronin.spring.mvc.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +16,8 @@ public class Employee {
     @Size(min = 2, max = 15, message = "The surname must contain at least 2 and no more than 15 characters")
     private String surname;
 
+    @Min(value = 500, message = "Salary must be greater than 499")
+    @Max(value = 1000, message = "Salary must be less than 1001")
     private int salary;
 
     private String department;
@@ -20,6 +25,9 @@ public class Employee {
     private String carBrand;
 
     private List<String> languages;
+
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}", message = "please use pattern xxx-xx-xx")
+    private String phoneNumber;
 
     private Map<String, String> departments = new HashMap<>();
 
@@ -79,6 +87,14 @@ public class Employee {
         this.languages = languages;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public Map<String, String> getDepartments() {
         return departments;
     }
@@ -112,6 +128,7 @@ public class Employee {
                 ", department='" + department + '\'' +
                 ", carBrand='" + carBrand + '\'' +
                 ", languages=" + languages +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 

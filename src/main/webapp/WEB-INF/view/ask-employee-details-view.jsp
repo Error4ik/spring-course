@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="for" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE>
 <html>
 <body>
@@ -13,11 +14,16 @@
             <form:errors path="surname"/>
             <br><br><br>
             Salary <form:input path="salary"/>
+            <form:errors path="salary"/>
             <br><br><br>
             Department
             <form:select path="department">
                 <form:options items="${employee.departments}"/>
             </form:select>
+            <br><br><br>
+            Phone number
+            <form:input path="phoneNumber"/>
+            <for:errors path="phoneNumber"/>
             <br><br><br>
             Which car do you want?
             <form:radiobuttons path="carBrand" items="${employee.carBrands}"/>

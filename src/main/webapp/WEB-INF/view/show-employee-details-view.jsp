@@ -38,6 +38,11 @@
             </c:forEach>
         </ul>
     </div>
+    <div>
+        <h2>
+            Your phone number: ${employee.phoneNumber}
+        </h2>
+    </div>
 </div>
 </body>
 </html>
