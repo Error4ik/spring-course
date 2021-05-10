@@ -1,5 +1,7 @@
 package com.voronin.spring.mvc.model;
 
+import com.voronin.spring.mvc.validation.CheckEmail;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
@@ -28,6 +30,9 @@ public class Employee {
 
     @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}", message = "please use pattern xxx-xx-xx")
     private String phoneNumber;
+
+    @CheckEmail(value = "abc.com", message = "The email must end abc.com")
+    private String email;
 
     private Map<String, String> departments = new HashMap<>();
 
@@ -95,6 +100,14 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Map<String, String> getDepartments() {
         return departments;
     }
@@ -129,6 +142,7 @@ public class Employee {
                 ", carBrand='" + carBrand + '\'' +
                 ", languages=" + languages +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 

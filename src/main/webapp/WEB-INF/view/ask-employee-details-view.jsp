@@ -13,6 +13,9 @@
             Surname <form:input path="surname"/>
             <form:errors path="surname"/>
             <br><br><br>
+            Email <form:input path="email"/>
+            <form:errors path="email"/>
+            <br><br><br>
             Salary <form:input path="salary"/>
             <form:errors path="salary"/>
             <br><br><br>

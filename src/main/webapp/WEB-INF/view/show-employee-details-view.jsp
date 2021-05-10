@@ -43,6 +43,11 @@
             Your phone number: ${employee.phoneNumber}
         </h2>
     </div>
+    <div>
+        <h2>
+            Your email: ${employee.email}
+        </h2>
+    </div>
 </div>
 </body>
 </html>
