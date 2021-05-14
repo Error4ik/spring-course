@@ -1,7 +1,7 @@
 package com.voronin.spring.mvc.controller;
 
-import com.voronin.spring.mvc.dao.EmployeeDao;
 import com.voronin.spring.mvc.model.Employee;
+import com.voronin.spring.mvc.services.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,15 +11,15 @@ import java.util.List;
 @Controller
 public class EmployeeController {
 
-    private final EmployeeDao employeeDao;
+    private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeDao employeeDao) {
-        this.employeeDao = employeeDao;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @RequestMapping("/")
     public String showAllEmployees(Model model) {
-        List<Employee> employees = this.employeeDao.getAllEmployees();
+        List<Employee> employees = this.employeeService.getEmployees();
         model.addAttribute("employees", employees);
         return "all-employees";
     }
