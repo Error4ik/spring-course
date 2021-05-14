@@ -5,5 +5,7 @@ import com.voronin.spring.mvc.model.Employee;
 import java.util.List;
 
 public interface EmployeeDao {
-    public List<Employee> getAllEmployees();
+    List<Employee> getAllEmployees();
+
+    void saveEmployee(Employee employee);
 }
