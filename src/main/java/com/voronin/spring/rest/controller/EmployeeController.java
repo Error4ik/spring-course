@@ -30,4 +30,10 @@ public class EmployeeController {
         }
         return employee;
     }
+
+    @PostMapping("/employees")
+    public Employee saveEmployee(@RequestBody Employee employee) {
+        this.employeeService.saveEmployee(employee);
+        return employee;
+    }
 }
