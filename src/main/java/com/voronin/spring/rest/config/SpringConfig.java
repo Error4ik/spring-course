@@ -13,10 +13,10 @@ import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.util.Properties;
 
-@Configuration
-@ComponentScan(basePackages = "com.voronin.spring.rest")
 @EnableWebMvc
+@Configuration
 @EnableTransactionManagement
+@ComponentScan(basePackages = "com.voronin.spring.rest")
 public class SpringConfig {
 
     @Bean
@@ -24,7 +24,7 @@ public class SpringConfig {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&amp;serverTimezone=UTC");
+            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db");
             dataSource.setUser("bestuser");
             dataSource.setPassword("bestuser");
         } catch (PropertyVetoException e) {
