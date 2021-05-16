@@ -1,6 +1,6 @@
-package com.voronin.spring.mvc.dao;
+package com.voronin.spring.rest.repository;
 
-import com.voronin.spring.mvc.model.Employee;
+import com.voronin.spring.rest.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -9,16 +9,16 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     private final SessionFactory sessionFactory;
 
-    public EmployeeDaoImpl(SessionFactory sessionFactory) {
+    public EmployeeRepositoryImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<Employee> getEmployees() {
         Session session = this.sessionFactory.getCurrentSession();
         Query<Employee> query = session.createQuery("from Employee", Employee.class);
         return query.getResultList();

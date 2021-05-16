@@ -1,6 +1,6 @@
-package com.voronin.spring.mvc.services;
+package com.voronin.spring.rest.services;
 
-import com.voronin.spring.mvc.model.Employee;
+import com.voronin.spring.rest.entity.Employee;
 
 import java.util.List;
 

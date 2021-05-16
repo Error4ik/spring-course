@@ -1,4 +1,4 @@
-package com.voronin.spring.mvc.model;
+package com.voronin.spring.rest.entity;
 
 import javax.persistence.*;
 
