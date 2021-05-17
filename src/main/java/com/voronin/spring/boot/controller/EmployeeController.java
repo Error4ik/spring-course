@@ -1,8 +1,7 @@
-package com.voronin.spring.rest.controller;
+package com.voronin.spring.boot.controller;
 
-import com.voronin.spring.rest.entity.Employee;
-import com.voronin.spring.rest.exception_handling.NoSuchEmployeeException;
-import com.voronin.spring.rest.services.EmployeeService;
+import com.voronin.spring.boot.entity.Employee;
+import com.voronin.spring.boot.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,11 +23,7 @@ public class EmployeeController {
 
     @GetMapping("/employees/{id}")
     public Employee getEmployee(@PathVariable int id) {
-        Employee employee = this.employeeService.getEmployee(id);
-        if (employee == null) {
-            throw new NoSuchEmployeeException(String.format("There is no Employee with id %s in Database", id));
-        }
-        return employee;
+        return this.employeeService.getEmployee(id);
     }
 
     @PostMapping("/employees")
@@ -45,10 +40,6 @@ public class EmployeeController {
 
     @DeleteMapping("/employees/{id}")
     public String deleteEmployee(@PathVariable int id) {
-        Employee employee = this.employeeService.getEmployee(id);
-        if (employee == null) {
-            throw new NoSuchEmployeeException(String.format("There is no Employee with ID = %s", id));
-        }
         this.employeeService.deleteEmployee(id);
         return String.format("Employee with ID %s was deleted.", id);
     }

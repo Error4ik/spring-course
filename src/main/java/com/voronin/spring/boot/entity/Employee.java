@@ -1,4 +1,4 @@
-package com.voronin.spring.rest.entity;
+package com.voronin.spring.boot.entity;
 
 import javax.persistence.*;
 

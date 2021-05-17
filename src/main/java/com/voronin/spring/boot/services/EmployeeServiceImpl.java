@@ -1,7 +1,7 @@
-package com.voronin.spring.rest.services;
+package com.voronin.spring.boot.services;
 
-import com.voronin.spring.rest.entity.Employee;
-import com.voronin.spring.rest.repository.EmployeeRepository;
+import com.voronin.spring.boot.entity.Employee;
+import com.voronin.spring.boot.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

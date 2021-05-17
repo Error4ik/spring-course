@@ -1,6 +1,6 @@
-package com.voronin.spring.rest.repository;
+package com.voronin.spring.boot.repository;
 
-import com.voronin.spring.rest.entity.Employee;
+import com.voronin.spring.boot.entity.Employee;
 
 import java.util.List;
 
