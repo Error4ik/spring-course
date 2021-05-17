@@ -28,13 +28,13 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     public Employee saveEmployee(@RequestBody Employee employee) {
-        this.employeeService.saveEmployee(employee);
+        this.employeeService.saveOrUpdate(employee);
         return employee;
     }
 
     @PutMapping("/employees")
     public Employee updateEmployee(@RequestBody Employee employee) {
-        this.employeeService.saveEmployee(employee);
+        this.employeeService.saveOrUpdate(employee);
         return employee;
     }
 

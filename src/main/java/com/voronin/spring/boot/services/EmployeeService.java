@@ -7,7 +7,7 @@ import java.util.List;
 public interface EmployeeService {
     List<Employee> getEmployees();
 
-    void saveEmployee(Employee employee);
+    void saveOrUpdate(Employee employee);
 
     Employee getEmployee(int id);
 
