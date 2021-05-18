@@ -18,29 +18,33 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public List<Employee> getEmployees() {
-        return this.employeeService.getEmployees();
+        return this.employeeService.findAll();
     }
 
     @GetMapping("/employees/{id}")
     public Employee getEmployee(@PathVariable int id) {
-        return this.employeeService.getEmployee(id);
+        return this.employeeService.findById(id);
     }
 
     @PostMapping("/employees")
     public Employee saveEmployee(@RequestBody Employee employee) {
-        this.employeeService.saveOrUpdate(employee);
-        return employee;
+        return this.employeeService.save(employee);
     }
 
     @PutMapping("/employees")
     public Employee updateEmployee(@RequestBody Employee employee) {
-        this.employeeService.saveOrUpdate(employee);
+        this.employeeService.save(employee);
         return employee;
     }
 
     @DeleteMapping("/employees/{id}")
     public String deleteEmployee(@PathVariable int id) {
-        this.employeeService.deleteEmployee(id);
+        this.employeeService.deleteById(id);
         return String.format("Employee with ID %s was deleted.", id);
+    }
+
+    @GetMapping("/employees/name/{name}")
+    public List<Employee> findAllByName(@PathVariable String name) {
+        return this.employeeService.findAllByName(name);
     }
 }

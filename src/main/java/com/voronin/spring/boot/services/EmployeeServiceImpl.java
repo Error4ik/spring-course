@@ -3,7 +3,6 @@ package com.voronin.spring.boot.services;
 import com.voronin.spring.boot.entity.Employee;
 import com.voronin.spring.boot.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,26 +16,27 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @Transactional
-    public List<Employee> getEmployees() {
-        return this.employeeRepository.getEmployees();
+    public List<Employee> findAll() {
+        return this.employeeRepository.findAll();
     }
 
     @Override
-    @Transactional
-    public void saveOrUpdate(Employee employee) {
-        this.employeeRepository.saveOrUpdate(employee);
+    public Employee save(Employee employee) {
+        return this.employeeRepository.save(employee);
     }
 
     @Override
-    @Transactional
-    public Employee getEmployee(int id) {
-        return this.employeeRepository.getEmployee(id);
+    public Employee findById(int id) {
+        return this.employeeRepository.findById(id).orElseGet(Employee::new);
     }
 
     @Override
-    @Transactional
-    public void deleteEmployee(int id) {
-        this.employeeRepository.deleteEmployee(id);
+    public void deleteById(int id) {
+        this.employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Employee> findAllByName(String name) {
+        return this.employeeRepository.findAllByName(name);
     }
 }

@@ -5,11 +5,13 @@ import com.voronin.spring.boot.entity.Employee;
 import java.util.List;
 
 public interface EmployeeService {
-    List<Employee> getEmployees();
+    List<Employee> findAll();
 
-    void saveOrUpdate(Employee employee);
+    Employee save(Employee employee);
 
-    Employee getEmployee(int id);
+    Employee findById(int id);
 
-    void deleteEmployee(int id);
+    void deleteById(int id);
+
+    List<Employee> findAllByName(String name);
 }
